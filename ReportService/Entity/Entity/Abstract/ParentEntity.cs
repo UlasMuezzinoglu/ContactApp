@@ -9,7 +9,5 @@ namespace Entity.Abstract
     public abstract class ParentEntity
     {
         public Guid Id { get; set; }
-        
-        public bool IsDeleted { get; set; } = false;
     }
 }

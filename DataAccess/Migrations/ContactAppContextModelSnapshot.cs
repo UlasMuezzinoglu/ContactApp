@@ -28,6 +28,9 @@ namespace DataAccess.Migrations
                     b.Property<Guid>("ContactModelId")
                         .HasColumnType("uuid");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uuid");
 
@@ -45,8 +48,14 @@ namespace DataAccess.Migrations
                     b.Property<int>("ContactType")
                         .HasColumnType("integer");
 
-                    b.Property<string>("content")
+                    b.Property<string>("Content")
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -68,6 +77,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("text")
                         .HasColumnName("Firstname");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Lastname")
                         .HasColumnType("text")
                         .HasColumnName("Lastname");
@@ -79,9 +91,10 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5ed4bd46-baa0-49cc-a5ea-c89134ef7d22"),
+                            Id = new Guid("10829b20-0abe-4e2b-b00f-5b7397eb59ca"),
                             Company = "xyz Company",
                             Firstname = "Ulaş",
+                            IsDeleted = false,
                             Lastname = "Müezzinoglu"
                         });
                 });
