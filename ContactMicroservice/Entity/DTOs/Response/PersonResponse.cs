@@ -16,6 +16,6 @@ namespace Entity.DTOs.Response
 
         public List<ContactModel> ContactModels { get; set; }
 
-        public Guid PersonId { get; set; }
+        public Guid Id { get; set; }
     }
 }

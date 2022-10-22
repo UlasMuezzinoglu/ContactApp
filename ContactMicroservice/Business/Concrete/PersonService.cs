@@ -45,7 +45,7 @@ namespace Business.Concrete
 
         public List<PersonResponse> GetAll()
         {
-            List<Person> people = _personDal.GetAll(item => !item.IsDeleted);
+            List<Person> people = _personDal.GetAll(person => !person.IsDeleted);
 
             return _mapper.Map<List<PersonResponse>>(people);
         }

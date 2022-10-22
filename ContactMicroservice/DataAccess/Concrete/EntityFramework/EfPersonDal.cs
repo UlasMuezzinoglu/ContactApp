@@ -13,6 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfPersonDal : EfEntityRepositoryBase<Person, ContactAppContext>, IPersonDal
     {
+
         public PersonResponse GetDetail(ByIdRequest byIdRequest)
         {
             using (ContactAppContext context = new ContactAppContext()) {
@@ -22,7 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
                              where per.Id == byIdRequest.Id
                              select new PersonResponse
                              {
-                                 PersonId = per.Id,
+                                 Id = per.Id,
                                  Firstname = per.Firstname,
                                  Lastname = per.Lastname,
                                  Company = per.Company,
