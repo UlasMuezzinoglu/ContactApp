@@ -9,6 +9,6 @@ namespace Business.Abstract
 {
     public interface IReportService
     {
-        String applyForMyReport();
+        String ApplyForMyReport();
     }
 }
