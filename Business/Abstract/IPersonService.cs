@@ -1,5 +1,7 @@
 ﻿using Core.Utilities.Results;
+using Entity.Concrete;
 using Entity.DTOs.Request;
+using Entity.DTOs.Request.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace Business.Abstract
 {
     public interface IPersonService
     {
-        string Add(CreatePersonRequest createPersonRequest);
+        String Add(CreatePersonRequest createPersonRequest);
+
+        String Delete(ByIdRequest byIdRequest);
     }
 }

@@ -12,7 +12,7 @@ namespace Business.Abstract
 {
     public interface IContactModelService
     {
-        CreatedContactModelResponse add(CreateContactModelRequest createContactModelRequest);
-        String delete(ByIdRequest byIdRequest);
+        CreatedContactModelResponse Add(CreateContactModelRequest createContactModelRequest);
+        String Delete(ByIdRequest byIdRequest);
     }
 }

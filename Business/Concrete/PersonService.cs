@@ -1,7 +1,9 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using DataAccess.Abstract;
 using Entity.Concrete;
 using Entity.DTOs.Request;
+using Entity.DTOs.Request.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +14,32 @@ namespace Business.Concrete
 {
     public class PersonService : IPersonService
     {
-        IPersonDal _personDal;
+        private readonly IPersonDal _personDal;
 
-        public PersonService(IPersonDal personDal)
+        private readonly IMapper _mapper;
+
+        public PersonService(IPersonDal personDal, IMapper mapper)
         {
             _personDal = personDal;
+            _mapper = mapper;
         }
-        public string Add(CreatePersonRequest createPersonRequest)
+        public String Add(CreatePersonRequest createPersonRequest)
         {
-            Person person = new Person();
-            person.Firstname = createPersonRequest.Firstname;
-            person.Lastname = createPersonRequest.Lastname;
-            person.Company = createPersonRequest.Company;
+            Person person = _mapper.Map<Person>(createPersonRequest);
+          
 
             _personDal.Add(person);
 
-            return "success";
+            return "SUCCESS";
+        }
+
+        public string Delete(ByIdRequest byIdRequest)
+        {
+            Person deletedPerson = _personDal.Get(person => person.Id == byIdRequest.Id);
+            deletedPerson.IsDeleted = true;
+            _personDal.Update(deletedPerson);
+
+            return "SUCCESS";
         }
     }
 }
