@@ -4,6 +4,7 @@ using DataAccess.Abstract;
 using Entity.Concrete;
 using Entity.DTOs.Request;
 using Entity.DTOs.Request.Common;
+using Entity.DTOs.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,19 @@ namespace Business.Concrete
             _personDal.Update(deletedPerson);
 
             return "SUCCESS";
+        }
+
+        public List<PersonResponse> GetAll()
+        {
+            List<Person> people = _personDal.GetAll(item => !item.IsDeleted);
+
+            return _mapper.Map<List<PersonResponse>>(people);
+        }
+
+        public PersonResponse GetDetail(ByIdRequest byIdRequest)
+        {
+            PersonResponse person = _personDal.GetDetail(byIdRequest);
+            return person;
         }
     }
 }

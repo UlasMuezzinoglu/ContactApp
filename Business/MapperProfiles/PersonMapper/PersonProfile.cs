@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entity.Concrete;
 using Entity.DTOs.Request;
+using Entity.DTOs.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Business.MapperProfiles.PersonMapper
         public PersonProfile()
         {
             CreateMap<Person, CreatePersonRequest>().ReverseMap();
+            CreateMap<Person, PersonResponse>().ReverseMap();
         }
 
     }

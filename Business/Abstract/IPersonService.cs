@@ -2,6 +2,7 @@
 using Entity.Concrete;
 using Entity.DTOs.Request;
 using Entity.DTOs.Request.Common;
+using Entity.DTOs.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,9 @@ namespace Business.Abstract
         String Add(CreatePersonRequest createPersonRequest);
 
         String Delete(ByIdRequest byIdRequest);
+
+        List<PersonResponse> GetAll();
+
+        PersonResponse GetDetail(ByIdRequest byIdRequest);
     }
 }

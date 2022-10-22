@@ -33,5 +33,20 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getAll")]
+        public IActionResult GetAll()
+        {
+            var result = _personService.GetAll();
+
+            return Ok(result);
+        }
+
+        [HttpGet("getDetail")]
+        public IActionResult GetDetail([FromQuery] ByIdRequest byIdRequest)
+        {
+            var result = _personService.GetDetail(byIdRequest);
+
+            return Ok(result);
+        }
     }
 }
