@@ -1,3 +1,4 @@
+using Business;
 using Core.DependencyResolvers;
 using Core.Extensions;
 using Core.Utilities.IoC;
@@ -12,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace WebAPI
@@ -28,6 +30,8 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddBusinessServices();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

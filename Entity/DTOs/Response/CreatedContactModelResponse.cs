@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Entity.DTOs.Response
 {
     public class CreatedContactModelResponse
     {
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string content { get; set; }
+        public ContactTypeEnum ContactType { get; set; }
     }
 }

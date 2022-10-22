@@ -11,6 +11,8 @@ namespace Entity.Concrete
     public class ContactModel : ParentEntity, IEntity
     {
         public ContactTypeEnum ContactType { get; set; }
-        public string content { get; set; }
+        public string Content { get; set; }
+
+        public Guid PersonId { get; set; }
     }
 }

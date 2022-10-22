@@ -23,7 +23,11 @@ namespace Business.DependencyResolvers.Autofac
             // For Person
             builder.RegisterType<PersonService>().As<IPersonService>().SingleInstance();
             builder.RegisterType<EfPersonDal>().As<IPersonDal>().SingleInstance();
-            
+
+            // For Contact Model
+            builder.RegisterType<ContactModelService>().As<IContactModelService>().SingleInstance();
+            builder.RegisterType<EfContactModelDal>().As<IContactModelDal>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

@@ -12,8 +12,10 @@ namespace Business.ValidationRules.FluentValidation
     {
         public PersonValidator()
         {
-            RuleFor(person => person.Firstname).NotEmpty().Length(3,35);
-            RuleFor(person => person.Lastname).NotEmpty().Length(3, 35);
+            RuleFor(person => person.Firstname).Length(3,35);
+            RuleFor(person => person.Lastname).Length(3, 35);
+            RuleFor(person => person.Company).Length(3, 35);
+
         }
     }
 }
