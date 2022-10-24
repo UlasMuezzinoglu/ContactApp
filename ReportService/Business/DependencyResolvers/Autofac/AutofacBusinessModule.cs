@@ -22,7 +22,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<ReportService>().As<IReportService>().SingleInstance();
             builder.RegisterType<EfReportDal>().As<IReportDal>().SingleInstance();
 
-           
+            // For Producer Service
+            builder.RegisterType<ProducerService>().As<IProducerService>().SingleInstance();
+
+
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

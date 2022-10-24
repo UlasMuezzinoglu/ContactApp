@@ -1,5 +1,4 @@
-﻿using Entity.Concrete;
-using Entity.Dtos;
+﻿using Entity.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IReportService
+    public interface IProducerService
     {
-        Task<string> ApplyForMyReport(ApplyReportRequest applyReportRequest);
+        void PushReportApplyToQueue(String location);
     }
 }

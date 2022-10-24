@@ -10,5 +10,8 @@ namespace DataAccess.Abstract
 {
     public interface IContactModelDal : IEntityRepository<ContactModel>
     {
+        int GetTotalContactByLocation(String location);
+
+        int GetTotalGsmCountByLocation(String location);
     }
 }

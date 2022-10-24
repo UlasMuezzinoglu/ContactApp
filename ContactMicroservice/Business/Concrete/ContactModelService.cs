@@ -44,5 +44,27 @@ namespace Business.Concrete
 
             return "SUCCESS";
         }
+
+        public int GetTotalContactByLocation(string location)
+        {
+           return _contactModelDal.GetTotalContactByLocation(location);
+        }
+
+        public int GetTotalGsmCountByLocation(string location)
+        {
+            return _contactModelDal.GetTotalGsmCountByLocation(location);
+        }
+
+        public Dictionary<string,int> GetAllReportTypes(string location)
+        {
+            Dictionary<string,int> result = new Dictionary<string,int>();
+            result.Add("peopleCount", GetTotalContactByLocation(location));
+            result.Add("gsmCount", GetTotalGsmCountByLocation(location));
+            return result;
+        }
+
+
+
+
     }
 }

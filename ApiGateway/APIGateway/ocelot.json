@@ -60,9 +60,44 @@
       "UpstreamPathTemplate": "/contactModel/add?ContactType={ContactType}&Content={Content}&PersonId={PersonId}",
       "UpstreamHttpMethod": [ "Post" ]
     },
-    //
     {
-      "DownstreamPathTemplate": "/api/Reports/apply",
+      "DownstreamPathTemplate": "/api/ContactModels/GetTotalContactByLocation?location={location}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/contactModel/GetTotalContactByLocation?location={location}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ContactModels/GetTotalGsmCountByLocation?location={location}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/contactModel/GetTotalGsmCountByLocation?location={location}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ContactModels/GetAllReportTypes?location={location}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/contactModel/GetAllReportTypes?location={location}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Reports/Apply",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entity.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,12 +17,12 @@ namespace WebAPI.Controllers
             _reportService = reportService;
         }
 
-        [HttpPost("apply")]
-        public IActionResult Apply()
+        [HttpPost("Apply")]
+        public IActionResult Apply(ApplyReportRequest applyReportRequest)
         {
-            var result = _reportService.ApplyForMyReport();
+            var result = _reportService.ApplyForMyReport(applyReportRequest);
 
-            return Ok(result);
+            return Ok(result.Result);
         }
 
     }

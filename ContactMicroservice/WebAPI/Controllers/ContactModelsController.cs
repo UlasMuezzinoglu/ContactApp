@@ -24,5 +24,30 @@ namespace WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("GetTotalContactByLocation")]
+        public IActionResult GetTotalContactByLocation([FromQuery] string location)
+        {
+            var result = _contactModelService.GetTotalContactByLocation(location);
+
+            return Ok(result);
+        }
+
+        [HttpGet("GetTotalGsmCountByLocation")]
+        public IActionResult GetTotalGsmCountByLocation([FromQuery] string location)
+        {
+            var result = _contactModelService.GetTotalGsmCountByLocation(location);
+
+            return Ok(result);
+        }
+        
+
+        [HttpGet("GetAllReportTypes")]
+        public IActionResult GetAllReportTypes([FromQuery] string location)
+        {
+            var result = _contactModelService.GetAllReportTypes(location);
+
+            return Ok(result);
+        }
     }
 }
