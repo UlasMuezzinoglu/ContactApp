@@ -10,7 +10,7 @@ Uygulamanın Temel görevi :
   * Core Service
   * Contact Service
   * Report Service
-  * Backgrount Service
+  * Background Service
   * API Gateway Service
   
 # Kullanılan Teknolojiler
