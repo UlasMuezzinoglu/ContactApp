@@ -1,10 +1,12 @@
 ﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Core.DataAccess.EntityFramework
@@ -12,6 +14,8 @@ namespace Core.DataAccess.EntityFramework
     public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
     where TEntity : class, IEntity, new() where TContext : DbContext, new()
     {
+        protected TContext Context { get; }
+
         public void Add(TEntity entity)
         {
             //IDisposable pattern implementation of c#
