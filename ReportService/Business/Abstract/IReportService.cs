@@ -11,5 +11,9 @@ namespace Business.Abstract
     public interface IReportService
     {
         Task<string> ApplyForMyReport(ApplyReportRequest applyReportRequest);
+
+        List<Report> GetAll();
+
+        Report Get(Guid guid);
     }
 }

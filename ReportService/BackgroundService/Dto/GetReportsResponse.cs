@@ -8,7 +8,7 @@ namespace BackgroundService.Dto
 {
     public class GetReportsResponse
     {
-        public int peopleCount { get; set; }
-        public int gsmCount { get; set; }
+        public Dictionary<string,int> peopleCount { get; set; }
+        public Dictionary<string, int> gsmCount { get; set; }
     }
 }

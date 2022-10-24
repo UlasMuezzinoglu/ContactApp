@@ -15,10 +15,10 @@ namespace Business.Abstract
         CreatedContactModelResponse Add(CreateContactModelRequest createContactModelRequest);
         String Delete(ByIdRequest byIdRequest);
 
-        int GetTotalContactByLocation(string location);
+        Dictionary<string,int> GetTotalContactByLocation(string location);
 
-        int GetTotalGsmCountByLocation(string location);
+        Dictionary<string, int> GetTotalGsmCountByLocation(string location);
 
-        Dictionary<string,int> GetAllReportTypes(string location);
+        Dictionary<string, Dictionary<string, int>> GetAllReportTypes(string location);
     }
 }

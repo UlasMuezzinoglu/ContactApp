@@ -24,7 +24,7 @@ namespace BackgroundService
                 GroupId = "reportConsumer",
                 BootstrapServers = "localhost:9092",
             };
-
+            ExcelUtil util = new ExcelUtil();
 
             using (var consumer = new ConsumerBuilder<Null, string>(conf).Build()) {
                 consumer.Subscribe("reportApplies");
@@ -38,7 +38,8 @@ namespace BackgroundService
                         if (response.Message != null && !(response.Message.Value == "initalize"))
                         {
                             GetReportsResponse reportResponse = getReport(response.Message.Value).Result;
-                            ExcelUtil.CreateExcelFile(reportResponse.peopleCount, reportResponse.gsmCount, response.Message.Value);
+                            var path = ExcelUtil.CreateExcelFile(reportResponse.peopleCount, reportResponse.gsmCount, response.Message.Value);
+                            util.uploadReportEntity(path);
                         }
                         
                     }
@@ -54,14 +55,13 @@ namespace BackgroundService
 
         public async static Task<GetReportsResponse> getReport(string location) {
             using (var client = new HttpClient()) {
-                var result = await client.GetAsync(new Uri("http://localhost:5000/api/ContactModels/GetAllReportTypes?location="+ location));
+                var result = await client.GetAsync(new Uri("http://localhost:5000/api/ContactModels/GetAllReportTypes" + (string.IsNullOrEmpty(location) ? "" : "?location="+location)));
 
                 var json = await result.Content.ReadAsStringAsync();
 
                 GetReportsResponse getReportsResponse = JsonSerializer.Deserialize<GetReportsResponse>(json);
                 return getReportsResponse;
             }
-            
         }
     }
 }

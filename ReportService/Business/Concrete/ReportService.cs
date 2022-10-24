@@ -49,6 +49,17 @@ namespace Business.Concrete
             Report report = new();
 
             _reportDal.Add(report);
+            
+        }
+
+        public List<Report> GetAll()
+        {
+            return _reportDal.GetAll();
+        }
+
+        public Report Get(Guid guid)
+        {
+            return _reportDal.Get(item => item.Id == guid);
         }
     }
 }
