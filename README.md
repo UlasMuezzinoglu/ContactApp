@@ -51,5 +51,7 @@ Rapor sisteminde Apply işleminde ki location ZORUNLU DEĞİLDİR. eğer gönder
 
 Bir Problem Yaşanması Halinde Linkedin üzerinden ulaşabilirsiniz.
 https://www.linkedin.com/in/ulasmuezzinoglu
+
+Kullanıcıya İletişim Bilgisi Eklenirken, Type olarak Enum Kullanılmıştır. 0 = Telefon Numarası  , 1 = PHONE , 2 = LOCATION 'ı temsil etmektedir.
     
     
