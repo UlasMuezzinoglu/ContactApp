@@ -31,9 +31,15 @@ namespace Business.Concrete
         public CreatedContactModelResponse Add(CreateContactModelRequest createContactModelRequest)
         {
             ContactModel contactModel = _mapper.Map<ContactModel>(createContactModelRequest);
-            _contactModelDal.Add(contactModel);
 
-            return _mapper.Map<CreatedContactModelResponse>(contactModel);
+
+            if (!(_contactModelDal.isExistsByPersonIdAndContactType(createContactModelRequest.PersonId, createContactModelRequest.ContactType)))
+            {
+                _contactModelDal.Add(contactModel);
+                return _mapper.Map<CreatedContactModelResponse>(contactModel);
+            }
+
+            throw new OperationCanceledException();           
         }
 
         public string Delete(ByIdRequest byIdRequest)
@@ -44,5 +50,27 @@ namespace Business.Concrete
 
             return "SUCCESS";
         }
+
+        public Dictionary<string, int> GetTotalContactByLocation(string location)
+        {
+           return _contactModelDal.GetTotalContactByLocation(location);
+        }
+
+        public Dictionary<string, int> GetTotalGsmCountByLocation(string location)
+        {
+            return _contactModelDal.GetTotalGsmCountByLocation(location);
+        }
+
+        public Dictionary<string,Dictionary<string,int>> GetAllReportTypes(string location)
+        {
+            Dictionary<string,Dictionary<string,int>> result = new Dictionary<string, Dictionary<string, int>>();
+            result.Add("peopleCount",GetTotalContactByLocation(location));
+            result.Add("gsmCount", GetTotalGsmCountByLocation(location));
+            return result;
+        }
+
+
+
+
     }
 }

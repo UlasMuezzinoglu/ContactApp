@@ -1,4 +1,5 @@
 ﻿using Entity.Concrete;
+using Entity.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace Business.Abstract
 {
     public interface IReportService
     {
-        String applyForMyReport();
+        Task<string> ApplyForMyReport(ApplyReportRequest applyReportRequest);
+
+        List<Report> GetAll();
+
+        Report Get(Guid guid);
     }
 }

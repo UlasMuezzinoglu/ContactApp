@@ -10,5 +10,10 @@ namespace DataAccess.Abstract
 {
     public interface IContactModelDal : IEntityRepository<ContactModel>
     {
+
+        bool isExistsByPersonIdAndContactType(Guid personId, ContactTypeEnum contactType);
+        Dictionary<string, int> GetTotalContactByLocation(String location);
+
+        Dictionary<string, int> GetTotalGsmCountByLocation(String location);
     }
 }

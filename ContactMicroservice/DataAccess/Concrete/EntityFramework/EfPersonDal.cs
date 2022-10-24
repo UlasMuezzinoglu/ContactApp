@@ -17,9 +17,7 @@ namespace DataAccess.Concrete.EntityFramework
         public PersonResponse GetDetail(ByIdRequest byIdRequest)
         {
             using (ContactAppContext context = new ContactAppContext()) {
-                var person = from cm in context.ContactModels
-                             join per in context.Persons
-                             on cm.PersonId equals per.Id
+                var person = from per in context.Persons
                              where per.Id == byIdRequest.Id
                              select new PersonResponse
                              {
@@ -28,13 +26,25 @@ namespace DataAccess.Concrete.EntityFramework
                                  Lastname = per.Lastname,
                                  Company = per.Company,
                              };
+
+
+                if (!person.Any())
+                {
+                    return null;
+                }
+                var model = person.FirstOrDefault();
                 var contacts = from cm in context.ContactModels
                                where cm.PersonId == byIdRequest.Id
                                select cm;
+                if (contacts.Any())
+                {
+                    model.ContactModels = contacts.ToList();
+                }
+                
 
-                var model = person.FirstOrDefault();
+                
 
-                model.ContactModels = contacts.ToList();
+                
 
                 return model;
             }
